@@ -1,0 +1,2378 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>
+   TERN Species Determination
+  </title>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <style>
+   #pylode {
+            position: fixed;
+            top: 130px;
+            left: -60px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-cp,
+        .sup-cl {
+            cursor:help;
+            margin-left: 3px;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-cp {
+            color:orange;
+        }
+
+        .sup-cl {
+            color:darkred;
+        }
+
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+  </style>
+  <script type="application/ld+json">
+   [
+  {
+    "@id": "https://w3id.org/tern/ontologies/sd/",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "TERN Species Determination"
+      }
+    ]
+  }
+]
+  </script>
+ </head>
+ <body>
+  <div id="pylode">
+   made by
+   <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">
+     p
+    </span>
+    <span style="color:#f9cb33;">
+     y
+    </span>
+    LODE
+   </a>
+   <span style="font-size:smaller;">
+    2.8.3
+   </span>
+  </div>  <a href="https://www.tern.org.au">
+   <img alt="TERN logo." src="https://swift.rc.nectar.org.au/v1/AUTH_05bca33fce34447ba7033b9305947f11/static-web-assets/tern/2020-04-09/images/logo-mini-all.png">
+  </a>
+  <h1>
+   TERN Species Determination
+  </h1>
+  <section id="metadata">
+   <h2 style="display:none;">
+    Metadata
+   </h2>
+   <dl>
+    <dt>
+     URI
+    </dt>
+    <dd>
+     <code>
+      https://w3id.org/tern/ontologies/sd/
+     </code>
+    </dd>
+    <dt>
+     Imports
+    </dt>
+    <dd>
+     <a href="https://raw.githubusercontent.com/AGLDWG/datatype-ont/master/rdf/datatype.rdf">
+      https://raw.githubusercontent.com/AGLDWG/datatype-ont/master/rdf/datatype.rdf
+     </a>
+     <br>
+    </dd>
+    <dt>
+     Ontology RDF
+    </dt>
+    <dd>
+     <a href="tern-sd.ttl">
+      RDF (turtle)
+     </a>
+    </dd>
+   </dl>
+  </section>
+  <section id="toc">
+   <h2>
+    Table of Contents
+   </h2>
+   <ol>
+    <li>
+     <a href="#overview">
+      Overview
+     </a>
+    </li>
+    <li>
+     <a href="#classes">
+      Classes
+     </a>
+    </li>
+    <li>
+     <a href="#properties">
+      Properties
+     </a>
+    </li>
+    <li>
+     <a href="#namespaces">
+      Namespaces
+     </a>
+    </li>
+    <li>
+     <a href="#legend">
+      Legend
+     </a>
+    </li>
+   </ol>
+  </section>
+  <section id="overview">
+   <h2>
+    Overview
+   </h2>
+   <p style="padding-bottom: 1rem;">
+    An overview of the TERN Species Determination.
+   </p>
+   <figure>
+    <img alt="TERN Species Determination diagram." src="overview.png">
+    <figcaption style="padding-bottom: 3rem">
+     <strong>
+      Figure 1:
+     </strong>
+     TERN Species Determination overview.
+    </figcaption>
+   </figure>
+  </section>
+  <section id="classes">
+   <h2>
+    Classes
+    <span style="float:right; font-size:smaller;">
+     <a href="">
+      &amp;uparrow
+     </a>
+    </span>
+   </h2>
+   <ul class="hlist">
+    <li>
+     <a href="#Fieldtaxonname">
+      Field taxon name
+     </a>
+    </li>
+    <li>
+     <a href="#Identification">
+      Identification
+     </a>
+    </li>
+    <li>
+     <a href="#MaterialSample">
+      Material Sample
+     </a>
+    </li>
+    <li>
+     <a href="#Nationaltaxon">
+      National taxon
+     </a>
+    </li>
+    <li>
+     <a href="#Stateidentification">
+      State identification
+     </a>
+    </li>
+    <li>
+     <a href="#Statetaxon">
+      State taxon
+     </a>
+    </li>
+    <li>
+     <a href="#Taxon">
+      Taxon
+     </a>
+    </li>
+   </ul>
+   <div class="entity class" id="Identification">
+    <h3>
+     Identification
+     <sup class="sup-c" title="class">
+      c
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/Identification
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       <p>
+        A taxonomic determination (e.g., the assignment to a taxon).
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      A subspecies determination of an organism.
+                    </pre>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Sub-classes
+      </th>
+      <td>
+       <a href="https://w3id.org/tern/ontologies/sd/StateIdentification">
+        tern-sd:StateIdentification
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity class" id="MaterialSample">
+    <h3>
+     Material Sample
+     <sup class="sup-c" title="class">
+      c
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/MaterialSample
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       <p>
+        A physical result of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      A whole organism preserved in a collection. A part of an organism isolated for some purpose. A soil sample. A marine microbial sample.
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity class" id="Taxon">
+    <h3>
+     Taxon
+     <sup class="sup-c" title="class">
+      c
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/Taxon
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       <p>
+        A group of organisms (sensu http://purl.obolibrary.org/obo/OBI_0100026) considered by taxonomists to form a homogeneous unit.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      The genus Truncorotaloides as published by Br&ouml;nnimann et al. in 1953 in the Journal of Paleontology Vol. 27(6) p. 817-820.
+                    </pre>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Sub-classes
+      </th>
+      <td>
+       <a href="https://w3id.org/tern/ontologies/sd/NationalTaxon">
+        tern-sd:NationalTaxon
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="https://w3id.org/tern/ontologies/sd/StateTaxon">
+        tern-sd:StateTaxon
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity class" id="Fieldtaxonname">
+    <h3>
+     Field taxon name
+     <sup class="sup-c" title="class">
+      c
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        https://w3id.org/tern/ontologies/sd/FieldTaxonName
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       <p>
+        A taxon (species) name determined in the field.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Super-classes
+      </th>
+      <td>
+       <a href="http://linked.data.gov.au/def/datatype/Text">
+        data:Text
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Restrictions
+      </th>
+      <td>
+       <a href="http://linked.data.gov.au/def/datatype/value">
+        data:value
+       </a>
+       <span class="cardinality">
+        exactly
+       </span>
+       1
+       <br>
+       <a href="https://w3id.org/tern/ontologies/sd/identification">
+        tern-sd:identification
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="https://w3id.org/tern/ontologies/sd/StateIdentification">
+        tern-sd:StateIdentification
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity class" id="Nationaltaxon">
+    <h3>
+     National taxon
+     <sup class="sup-c" title="class">
+      c
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        https://w3id.org/tern/ontologies/sd/NationalTaxon
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       <p>
+        A taxon definition by the national herbarium.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Super-classes
+      </th>
+      <td>
+       <a href="http://rs.tdwg.org/dwc/terms/Taxon">
+        dwc:Taxon
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Restrictions
+      </th>
+      <td>
+       <a href="http://rs.tdwg.org/dwc/terms/scientificName">
+        dwc:scientificName
+       </a>
+       <span class="cardinality">
+        exactly
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/taxonConceptID">
+        dwc:taxonConceptID
+       </a>
+       <span class="cardinality">
+        exactly
+       </span>
+       1
+       <br>
+       <a href="http://www.w3.org/2000/01/rdf-schema#comment">
+        rdfs:comment
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/scientificNameID">
+        dwc:scientificNameID
+       </a>
+       <span class="cardinality">
+        exactly
+       </span>
+       1
+       <br>
+       <a href="http://www.w3.org/2000/01/rdf-schema#label">
+        rdfs:label
+       </a>
+       <span class="cardinality">
+        exactly
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity class" id="Stateidentification">
+    <h3>
+     State identification
+     <sup class="sup-c" title="class">
+      c
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        https://w3id.org/tern/ontologies/sd/StateIdentification
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       <p>
+        An identification performed by the state herbarium.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Super-classes
+      </th>
+      <td>
+       <a href="http://rs.tdwg.org/dwc/terms/Identification">
+        dwc:Identification
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Restrictions
+      </th>
+      <td>
+       <a href="http://rs.tdwg.org/dwc/terms/identificationRemarks">
+        dwc:identificationRemarks
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <br>
+       <a href="https://w3id.org/tern/ontologies/sd/stateTaxon">
+        tern-sd:stateTaxon
+       </a>
+       <span class="cardinality">
+        exactly
+       </span>
+       1
+       <a href="https://w3id.org/tern/ontologies/sd/StateTaxon">
+        tern-sd:StateTaxon
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/identifiedBy">
+        dwc:identifiedBy
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <br>
+       <a href="https://w3id.org/tern/ontologies/sd/identifiedSample">
+        tern-sd:identifiedSample
+       </a>
+       <span class="cardinality">
+        exactly
+       </span>
+       1
+       <a href="http://rs.tdwg.org/dwc/terms/MaterialSample">
+        dwc:MaterialSample
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/identificationID">
+        dwc:identificationID
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <br>
+       <a href="https://w3id.org/tern/ontologies/sd/nationalTaxon">
+        tern-sd:nationalTaxon
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="https://w3id.org/tern/ontologies/sd/NationalTaxon">
+        tern-sd:NationalTaxon
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/dateIdentified">
+        dwc:dateIdentified
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <br>
+       <a href="http://www.w3.org/2000/01/rdf-schema#comment">
+        rdfs:comment
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <br>
+       <a href="http://www.w3.org/2000/01/rdf-schema#label">
+        rdfs:label
+       </a>
+       <span class="cardinality">
+        exactly
+       </span>
+       1
+       <br>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity class" id="Statetaxon">
+    <h3>
+     State taxon
+     <sup class="sup-c" title="class">
+      c
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        https://w3id.org/tern/ontologies/sd/StateTaxon
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       <p>
+        A taxon definition by the state herbarium.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Super-classes
+      </th>
+      <td>
+       <a href="http://rs.tdwg.org/dwc/terms/Taxon">
+        dwc:Taxon
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Restrictions
+      </th>
+      <td>
+       <a href="https://w3id.org/tern/ontologies/sd/nationalTaxon">
+        tern-sd:nationalTaxon
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="https://w3id.org/tern/ontologies/sd/NationalTaxon">
+        tern-sd:NationalTaxon
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/scientificName">
+        dwc:scientificName
+       </a>
+       <span class="cardinality">
+        exactly
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/phylum">
+        dwc:phylum
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/scientificNameAuthorship">
+        dwc:scientificNameAuthorship
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://www.w3.org/2000/01/rdf-schema#label">
+        rdfs:label
+       </a>
+       <span class="cardinality">
+        exactly
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/infraspecificEpithet">
+        dwc:infraspecificEpithet
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/family">
+        dwc:family
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://www.w3.org/2000/01/rdf-schema#comment">
+        rdfs:comment
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="https://w3id.org/tern/ontologies/sd/identification">
+        tern-sd:identification
+       </a>
+       <span class="cardinality">
+        exactly
+       </span>
+       1
+       <a href="https://w3id.org/tern/ontologies/sd/StateIdentification">
+        tern-sd:StateIdentification
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/order">
+        dwc:order
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/kingdom">
+        dwc:kingdom
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/class">
+        dwc:class
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/genus">
+        dwc:genus
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/specificEpithet">
+        dwc:specificEpithet
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <a href="http://www.w3.org/2001/XMLSchema#string">
+        xsd:string
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br>
+       <a href="http://rs.tdwg.org/dwc/terms/taxonRemarks">
+        dwc:taxonRemarks
+       </a>
+       <span class="cardinality">
+        max
+       </span>
+       1
+       <br>
+      </td>
+     </tr>
+    </table>
+   </div>
+  </section>
+  <section id="properties">
+   <h2>
+    Properties
+    <span style="float:right; font-size:smaller;">
+     <a href="">
+      &amp;uparrow
+     </a>
+    </span>
+   </h2>
+   <ul class="hlist">
+    <li>
+     <a href="#class">
+      class
+     </a>
+    </li>
+    <li>
+     <a href="#dateIdentified">
+      dateIdentified
+     </a>
+    </li>
+    <li>
+     <a href="#family">
+      family
+     </a>
+    </li>
+    <li>
+     <a href="#genus">
+      genus
+     </a>
+    </li>
+    <li>
+     <a href="#identificationID">
+      identification ID
+     </a>
+    </li>
+    <li>
+     <a href="#identificationremarks">
+      identification remarks
+     </a>
+    </li>
+    <li>
+     <a href="#identifiedby">
+      identified by
+     </a>
+    </li>
+    <li>
+     <a href="#infraspecificepithet">
+      infraspecific epithet
+     </a>
+    </li>
+    <li>
+     <a href="#kingdom">
+      kingdom
+     </a>
+    </li>
+    <li>
+     <a href="#materialsampleID">
+      material sample ID
+     </a>
+    </li>
+    <li>
+     <a href="#nameaccordingto">
+      name according to
+     </a>
+    </li>
+    <li>
+     <a href="#order">
+      order
+     </a>
+    </li>
+    <li>
+     <a href="#phylum">
+      phylum
+     </a>
+    </li>
+    <li>
+     <a href="#scientificname">
+      scientific name
+     </a>
+    </li>
+    <li>
+     <a href="#scientificnameauthorship">
+      scientific name authorship
+     </a>
+    </li>
+    <li>
+     <a href="#scientificnameID">
+      scientific name ID
+     </a>
+    </li>
+    <li>
+     <a href="#specificepithet">
+      specific epithet
+     </a>
+    </li>
+    <li>
+     <a href="#taxonconceptID">
+      taxon concept ID
+     </a>
+    </li>
+    <li>
+     <a href="#taxonremarks">
+      taxon remarks
+     </a>
+    </li>
+    <li>
+     <a href="#identification">
+      identification
+     </a>
+    </li>
+    <li>
+     <a href="#identifiedsample">
+      identified sample
+     </a>
+    </li>
+    <li>
+     <a href="#nationaltaxon">
+      national taxon
+     </a>
+    </li>
+    <li>
+     <a href="#statetaxon">
+      state taxon
+     </a>
+    </li>
+   </ul>
+   <div class="entity property" id="class">
+    <h3>
+     class
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/class
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       The full scientific name of the class in which the taxon is classified.
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="dateIdentified">
+    <h3>
+     dateIdentified
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/dateIdentified
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       The date on which the subject was identified as representing the Taxon.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      2009-02-20T08:40Z (20 February 2009 8:40am UTC).
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="family">
+    <h3>
+     family
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/family
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       The full scientific name of the family in which the taxon is classified.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      Felidae, Monocleaceae
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="genus">
+    <h3>
+     genus
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/genus
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       The full scientific name of the genus in which the taxon is classified.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      Puma, Monoclea
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="identificationID">
+    <h3>
+     identification ID
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/identificationID
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       An identifier for the Identification (the body of information associated with the assignment of a scientific name). May be a global unique identifier or an identifier specific to the data set.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      9992
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="identificationremarks">
+    <h3>
+     identification remarks
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/identificationRemarks
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       Comments or notes about the Identification.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      Distinguished between Anthus correndera and Anthus hellmayri based on the comparative lengths of the u&ntilde;as.
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="identifiedby">
+    <h3>
+     identified by
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/identifiedBy
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       A list (concatenated and separated) of names of people, groups, or organizations who assigned the Taxon to the subject.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      James L. Patton, Theodore Pappenfuss | Robert Macey
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="infraspecificepithet">
+    <h3>
+     infraspecific epithet
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/infraspecificEpithet
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       The name of the lowest or terminal infraspecific epithet of the scientificName, excluding any rank designation.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      	concolor, oxyadenia, sayi
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="kingdom">
+    <h3>
+     kingdom
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/kingdom
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       The full scientific name of the kingdom in which the taxon is classified.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      Animalia, Archaea, Bacteria, Chromista, Fungi, Plantae, Protozoa, Viruses
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="materialsampleID">
+    <h3>
+     material sample ID
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/materialSampleID
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       An identifier for the MaterialSample (as opposed to a particular digital record of the material sample). In the absence of a persistent global unique identifier, construct one from a combination of identifiers in the record that will most closely make the materialSampleID globally unique.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      06809dc5-f143-459a-be1a-6f03e63fc083
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="nameaccordingto">
+    <h3>
+     name according to
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/nameAccordingTo
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       The reference to the source in which the specific taxon concept circumscription is defined or implied - traditionally signified by the Latin "sensu" or "sec." (from secundum, meaning "according to"). For taxa that result from identifications, a reference to the keys, monographs, experts and other sources should be given.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      Werner Greuter 2008
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="order">
+    <h3>
+     order
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/order
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       The full scientific name of the order in which the taxon is classified.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      Carnivora, Monocleales
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="phylum">
+    <h3>
+     phylum
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/phylum
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       The full scientific name of the phylum or division in which the taxon is classified.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      Chordata (phylum). Bryophyta (division).
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="scientificname">
+    <h3>
+     scientific name
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/scientificName
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       The full scientific name, with authorship and date information if known. When forming part of an Identification, this should be the name in lowest level taxonomic rank that can be determined. This term should not contain identification qualifications, which should instead be supplied in the IdentificationQualifier term.
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="scientificnameauthorship">
+    <h3>
+     scientific name authorship
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/scientificNameAuthorship
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       The authorship information for the scientificName formatted according to the conventions of the applicable nomenclaturalCode.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      (Torr.) J.T. Howell, (Martinovsk&yacute;) Tzvelev, (Gy&ouml;rfi, 1952)
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="scientificnameID">
+    <h3>
+     scientific name ID
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/scientificNameID
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       An identifier for the nomenclatural (not taxonomic) details of a scientific name.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      urn:lsid:ipni.org:names:37829-1:1.3
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="specificepithet">
+    <h3>
+     specific epithet
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/specificEpithet
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       The name of the first or species epithet of the scientificName.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      concolor, gottschei
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="taxonconceptID">
+    <h3>
+     taxon concept ID
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/taxonConceptID
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       An identifier for the taxonomic concept to which the record refers - not for the nomenclatural details of a taxon.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      8fa58e08-08de-4ac1-b69c-1235340b7001
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="taxonremarks">
+    <h3>
+     taxon remarks
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        http://rs.tdwg.org/dwc/terms/taxonRemarks
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Is Defined By
+      </th>
+      <td>
+       http://rs.tdwg.org/dwc/terms/
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       Comments or notes about the taxon or name.
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Example
+      </th>
+      <td>
+       <pre>
+                      this name is a misspelling in common use
+                    </pre>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="identification">
+    <h3>
+     identification
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        https://w3id.org/tern/ontologies/sd/identification
+       </code>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="identifiedsample">
+    <h3>
+     identified sample
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        https://w3id.org/tern/ontologies/sd/identifiedSample
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       Link an Identification to a Sample.
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="nationaltaxon">
+    <h3>
+     national taxon
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        https://w3id.org/tern/ontologies/sd/nationalTaxon
+       </code>
+      </td>
+     </tr>
+    </table>
+   </div>
+   <div class="entity property" id="statetaxon">
+    <h3>
+     state taxon
+     <sup class="sup-p" title="property">
+      p
+     </sup>
+    </h3>
+    <table>
+     <tr>
+      <th>
+       URI
+      </th>
+      <td>
+       <code>
+        https://w3id.org/tern/ontologies/sd/stateTaxon
+       </code>
+      </td>
+     </tr>
+     <tr>
+      <th>
+       Description
+      </th>
+      <td>
+       Link an Identification or a Taxon to a State Taxon.
+      </td>
+     </tr>
+    </table>
+   </div>
+  </section>
+  <section id="namedindividuals">
+   <h2>
+    Named Individuals
+    <span style="float:right; font-size:smaller;">
+     <a href="">
+      &amp;uparrow
+     </a>
+    </span>
+   </h2>
+   <ul class="hlist">
+   </ul>
+  </section>
+  <section id="namespaces">
+   <h2>
+    Namespaces
+    <span style="float:right; font-size:smaller;">
+     <a href="">
+      &amp;uparrow
+     </a>
+    </span>
+   </h2>
+   <dl>
+    <dt>
+     data
+    </dt>
+    <dd>
+     <code>
+      http://linked.data.gov.au/def/datatype/
+     </code>
+    </dd>
+    <dt>
+     dwc
+    </dt>
+    <dd>
+     <code>
+      http://rs.tdwg.org/dwc/terms/
+     </code>
+    </dd>
+    <dt>
+     onm
+    </dt>
+    <dd>
+     <code>
+      https://w3id.org/tern/ontologies/onm/
+     </code>
+    </dd>
+    <dt>
+     owl
+    </dt>
+    <dd>
+     <code>
+      http://www.w3.org/2002/07/owl#
+     </code>
+    </dd>
+    <dt>
+     prov
+    </dt>
+    <dd>
+     <code>
+      http://www.w3.org/ns/prov#
+     </code>
+    </dd>
+    <dt>
+     rdf
+    </dt>
+    <dd>
+     <code>
+      http://www.w3.org/1999/02/22-rdf-syntax-ns#
+     </code>
+    </dd>
+    <dt>
+     rdfs
+    </dt>
+    <dd>
+     <code>
+      http://www.w3.org/2000/01/rdf-schema#
+     </code>
+    </dd>
+    <dt>
+     sdo
+    </dt>
+    <dd>
+     <code>
+      https://schema.org/
+     </code>
+    </dd>
+    <dt>
+     skos
+    </dt>
+    <dd>
+     <code>
+      http://www.w3.org/2004/02/skos/core#
+     </code>
+    </dd>
+    <dt>
+     tern-sd
+    </dt>
+    <dd>
+     <code>
+      https://w3id.org/tern/ontologies/sd/
+     </code>
+    </dd>
+    <dt>
+     xsd
+    </dt>
+    <dd>
+     <code>
+      http://www.w3.org/2001/XMLSchema#
+     </code>
+    </dd>
+   </dl>
+  </section>
+  <section id="legend">
+   <h2>
+    Legend
+   </h2>
+   <table class="entity">
+    <tr>
+     <td>
+      <sup class="sup-c" title="Classes">
+       c
+      </sup>
+     </td>
+     <td>
+      Classes
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <sup class="sup-op" title="Object Properties">
+       op
+      </sup>
+     </td>
+     <td>
+      Object Properties
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <sup class="sup-fp" title="Functional Properties">
+       fp
+      </sup>
+     </td>
+     <td>
+      Functional Properties
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <sup class="sup-dp" title="Data Properties">
+       dp
+      </sup>
+     </td>
+     <td>
+      Data Properties
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <sup class="sup-ap" title="Annotation Properties">
+       dp
+      </sup>
+     </td>
+     <td>
+      Annotation Properties
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <sup class="sup-p" title="Properties">
+       p
+      </sup>
+     </td>
+     <td>
+      Properties
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <sup class="sup-ni" title="Named Individuals">
+       ni
+      </sup>
+     </td>
+     <td>
+      Named Individuals
+     </td>
+    </tr>
+   </table>
+  </section>
+ </body>
+</html>

@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <rdf:Description rdf:nodeID="ub1bL346C19">
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/specificEpithet"/>
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/class">
+    <rdfs:label>class</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdfs:comment>The full scientific name of the class in which the taxon is classified.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL328C19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/order"/>
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL215C19">
+    <owl:onProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/specificEpithet">
+    <rdfs:label>specific epithet</rdfs:label>
+    <skos:example>concolor, gottschei</skos:example>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>The name of the first or species epithet of the scientificName.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/dateIdentified">
+    <skos:example>1809-02-12 (some time during 12 February 1809).</skos:example>
+    <rdfs:comment>The date on which the subject was identified as representing the Taxon.</rdfs:comment>
+    <skos:example>1963-03-08T14:07-0600 (8 Mar 1963 at 2:07pm in the time zone six hours earlier than UTC).</skos:example>
+    <skos:example>2007-11-13/15 (some time in the interval between 13 November 2007 and 15 November 2007).</skos:example>
+    <skos:example>2018-08-29T15:19 (3:19pm local time on 29 August 2018).</skos:example>
+    <skos:example>2009-02-20T08:40Z (20 February 2009 8:40am UTC).</skos:example>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <skos:example>1971 (some time in the year 1971).</skos:example>
+    <skos:example>1906-06 (some time in June 1906). </skos:example>
+    <skos:example>2007-03-01T13:00:00Z/2008-05-11T15:30:00Z (some time during the interval between 1 March 2007 1pm UTC and 11 May 2008 3:30pm UTC).</skos:example>
+    <rdfs:label>dateIdentified</rdfs:label>
+    <skos:example>1900/1909 (some time during the interval between the beginning of the year 1900 and the end of the year 1909).</skos:example>
+    <skos:note>Recommended best practice is to use a date that conforms to ISO 8601:2004(E).</skos:note>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/MaterialSample">
+    <skos:example>A whole organism preserved in a collection. A part of an organism isolated for some purpose. A soil sample. A marine microbial sample.</skos:example>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>A physical result of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed.</rdfs:comment>
+    <rdfs:label>Material Sample</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL340C19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/scientificNameAuthorship"/>
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/tern/ontologies/sd/StateTaxon">
+    <rdfs:subClassOf rdf:nodeID="ub1bL316C19"/>
+    <rdfs:label>State taxon</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="ub1bL334C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL340C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL352C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL298C19"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL370C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL310C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL304C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL293C19"/>
+    <rdfs:subClassOf rdf:resource="http://rs.tdwg.org/dwc/terms/Taxon"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL358C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL346C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL322C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL364C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL376C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL328C19"/>
+    <rdfs:comment>A taxon definition by the state herbarium.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL376C19">
+    <owl:onClass rdf:resource="https://w3id.org/tern/ontologies/sd/StateIdentification"/>
+    <owl:onProperty rdf:resource="https://w3id.org/tern/ontologies/sd/identification"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL249C19">
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/identificationID"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/tern/ontologies/sd/">
+    <owl:imports rdf:resource="https://raw.githubusercontent.com/AGLDWG/datatype-ont/master/rdf/datatype.rdf"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label>TERN Species Determination</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/order">
+    <rdfs:label>order</rdfs:label>
+    <rdfs:comment>The full scientific name of the order in which the taxon is classified.</rdfs:comment>
+    <skos:example>Carnivora, Monocleales</skos:example>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL316C19">
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/infraspecificEpithet"/>
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/identificationID">
+    <rdfs:comment>An identifier for the Identification (the body of information associated with the assignment of a scientific name). May be a global unique identifier or an identifier specific to the data set.</rdfs:comment>
+    <skos:example>9992</skos:example>
+    <rdfs:label>identification ID</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL264C19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL259C19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/identifiedBy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/family">
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <skos:example>Felidae, Monocleaceae</skos:example>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>family</rdfs:label>
+    <rdfs:comment>The full scientific name of the family in which the taxon is classified.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL188C19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://linked.data.gov.au/def/datatype/value"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/Taxon">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdfs:label>Taxon</rdfs:label>
+    <skos:example>The genus Truncorotaloides as published by Brönnimann et al. in 1953 in the Journal of Paleontology Vol. 27(6) p. 817-820.</skos:example>
+    <rdfs:comment>A group of organisms (sensu http://purl.obolibrary.org/obo/OBI_0100026) considered by taxonomists to form a homogeneous unit.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/tern/ontologies/sd/StateIdentification">
+    <rdfs:subClassOf rdf:nodeID="ub1bL254C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL269C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL249C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL275C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL281C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL264C19"/>
+    <rdfs:label>State identification</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="ub1bL259C19"/>
+    <rdfs:comment>An identification performed by the state herbarium.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://rs.tdwg.org/dwc/terms/Identification"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL239C19"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL244C19"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/tern/ontologies/sd/NationalTaxon">
+    <rdfs:subClassOf rdf:nodeID="ub1bL221C19"/>
+    <rdfs:label>National taxon</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="ub1bL227C19"/>
+    <rdfs:comment>A taxon definition by the national herbarium.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="ub1bL210C19"/>
+    <rdfs:subClassOf rdf:resource="http://rs.tdwg.org/dwc/terms/Taxon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL205C19"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL215C19"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL352C19">
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/tern/ontologies/sd/stateTaxon">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>Link an Identification or a Taxon to a State Taxon.</rdfs:comment>
+    <rdfs:label>state taxon</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/nameAccordingTo">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <skos:example>Lilljeborg 1861, Upsala Univ. Arsskrift, Math. Naturvet., pp. 4, 5</skos:example>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdfs:comment>The reference to the source in which the specific taxon concept circumscription is defined or implied - traditionally signified by the Latin "sensu" or "sec." (from secundum, meaning "according to"). For taxa that result from identifications, a reference to the keys, monographs, experts and other sources should be given.</rdfs:comment>
+    <rdfs:label>name according to</rdfs:label>
+    <skos:example>Werner Greuter 2008</skos:example>
+    <skos:example>McCranie, J. R., D. B. Wake, and L. D. Wilson. 1996. The taxonomic status of Bolitoglossa schmidti, with comments on the biology of the Mesoamerican salamander Bolitoglossa dofleini (Caudata: Plethodontidae). Carib. J. Sci. 32:395-398.</skos:example>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL322C19">
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/kingdom"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/scientificNameAuthorship">
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdfs:label>scientific name authorship</rdfs:label>
+    <skos:example>(Torr.) J.T. Howell, (Martinovský) Tzvelev, (Györfi, 1952)</skos:example>
+    <rdfs:comment>The authorship information for the scientificName formatted according to the conventions of the applicable nomenclaturalCode.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL244C19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/dateIdentified"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/identifiedBy">
+    <skos:note>Recommended best practice is to separate the values in a list with space vertical bar space ( | ).</skos:note>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>A list (concatenated and separated) of names of people, groups, or organizations who assigned the Taxon to the subject.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <skos:example>James L. Patton, Theodore Pappenfuss | Robert Macey</skos:example>
+    <rdfs:label>identified by</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/phylum">
+    <skos:example>Chordata (phylum). Bryophyta (division).</skos:example>
+    <rdfs:label>phylum</rdfs:label>
+    <rdfs:comment>The full scientific name of the phylum or division in which the taxon is classified.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL358C19">
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/tern/ontologies/sd/nationalTaxon"/>
+    <owl:onClass rdf:resource="https://w3id.org/tern/ontologies/sd/NationalTaxon"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/tern/ontologies/sd/FieldTaxonName">
+    <rdfs:comment>A taxon (species) name determined in the field.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="ub1bL188C19"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Field taxon name</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://linked.data.gov.au/def/datatype/Text"/>
+    <rdfs:subClassOf rdf:nodeID="ub1bL193C19"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL304C19">
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/family"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL364C19">
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/scientificName"/>
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL205C19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/scientificNameID"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/infraspecificEpithet">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <skos:example>	concolor, oxyadenia, sayi</skos:example>
+    <rdfs:comment>The name of the lowest or terminal infraspecific epithet of the scientificName, excluding any rank designation.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdfs:label>infraspecific epithet</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/taxonConceptID">
+    <rdfs:comment>An identifier for the taxonomic concept to which the record refers - not for the nomenclatural details of a taxon.</rdfs:comment>
+    <rdfs:label>taxon concept ID</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <skos:example>8fa58e08-08de-4ac1-b69c-1235340b7001</skos:example>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL269C19">
+    <owl:onProperty rdf:resource="https://w3id.org/tern/ontologies/sd/nationalTaxon"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="https://w3id.org/tern/ontologies/sd/NationalTaxon"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/kingdom">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>kingdom</rdfs:label>
+    <skos:example>Animalia, Archaea, Bacteria, Chromista, Fungi, Plantae, Protozoa, Viruses</skos:example>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdfs:comment>The full scientific name of the kingdom in which the taxon is classified.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL221C19">
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/scientificName"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL210C19">
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/taxonConceptID"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL310C19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/genus"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL227C19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL275C19">
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/tern/ontologies/sd/identifiedSample"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="http://rs.tdwg.org/dwc/terms/MaterialSample"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/tern/ontologies/sd/identifiedSample">
+    <rdfs:comment>Link an Identification to a Sample.</rdfs:comment>
+    <rdfs:label>identified sample</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL239C19">
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL298C19">
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/class"/>
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL193C19">
+    <owl:onProperty rdf:resource="https://w3id.org/tern/ontologies/sd/identification"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="https://w3id.org/tern/ontologies/sd/StateIdentification"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/scientificNameID">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <skos:example>urn:lsid:ipni.org:names:37829-1:1.3</skos:example>
+    <rdfs:label>scientific name ID</rdfs:label>
+    <rdfs:comment>An identifier for the nomenclatural (not taxonomic) details of a scientific name.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL254C19">
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/identificationRemarks"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/Identification">
+    <rdfs:comment>A taxonomic determination (e.g., the assignment to a taxon).</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdfs:label>Identification</rdfs:label>
+    <skos:example>A subspecies determination of an organism.</skos:example>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL334C19">
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/phylum"/>
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL293C19">
+    <owl:onProperty rdf:resource="http://rs.tdwg.org/dwc/terms/taxonRemarks"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/scientificName">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdfs:comment>The full scientific name, with authorship and date information if known. When forming part of an Identification, this should be the name in lowest level taxonomic rank that can be determined. This term should not contain identification qualifications, which should instead be supplied in the IdentificationQualifier term.</rdfs:comment>
+    <rdfs:label>scientific name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL281C19">
+    <owl:onClass rdf:resource="https://w3id.org/tern/ontologies/sd/StateTaxon"/>
+    <owl:onProperty rdf:resource="https://w3id.org/tern/ontologies/sd/stateTaxon"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/taxonRemarks">
+    <rdfs:label>taxon remarks</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <skos:example>this name is a misspelling in common use</skos:example>
+    <rdfs:comment>Comments or notes about the taxon or name.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/genus">
+    <rdfs:label>genus</rdfs:label>
+    <rdfs:comment>The full scientific name of the genus in which the taxon is classified.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <skos:example>Puma, Monoclea</skos:example>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/materialSampleID">
+    <skos:example>06809dc5-f143-459a-be1a-6f03e63fc083</skos:example>
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdfs:comment>An identifier for the MaterialSample (as opposed to a particular digital record of the material sample). In the absence of a persistent global unique identifier, construct one from a combination of identifiers in the record that will most closely make the materialSampleID globally unique.</rdfs:comment>
+    <rdfs:label>material sample ID</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://rs.tdwg.org/dwc/terms/identificationRemarks">
+    <rdfs:isDefinedBy rdf:resource="http://rs.tdwg.org/dwc/terms/"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>identification remarks</rdfs:label>
+    <skos:example>Distinguished between Anthus correndera and Anthus hellmayri based on the comparative lengths of the uñas.</skos:example>
+    <rdfs:comment>Comments or notes about the Identification.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/tern/ontologies/sd/nationalTaxon">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>national taxon</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ub1bL370C19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <owl:onClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/tern/ontologies/sd/identification">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>identification</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>
